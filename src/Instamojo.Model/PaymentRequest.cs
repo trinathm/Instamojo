@@ -22,7 +22,7 @@ namespace Instamojo.Model
         /// Gets or sets the amount.
         /// </summary>
         /// <value>Amount requested (min-value: 9 ; max-value: 200000).</value>
-        public string Amount { get; set; }
+        public decimal Amount { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the buyer.
@@ -114,15 +114,25 @@ namespace Instamojo.Model
         [JsonProperty(PropertyName = "shorturl")]
         public string ShortUrl { get; }
 
+        /// <summary>
+        /// Gets the long URL.
+        /// </summary>
+        /// <value>The long URL.</value>
         [JsonProperty(PropertyName = "longurl")]
         public string LongUrl { get; }
 
-
+        /// <summary>
+        /// Gets the created at.
+        /// </summary>
+        /// <value>The created at.</value>
         [JsonProperty(PropertyName = "created_at")]
-        public string CreatedAt { get; }
+        public DateTime CreatedAt { get; }
 
+        /// <summary>
+        /// Gets the modified at.
+        /// </summary>
+        /// <value>The modified at.</value>
         [JsonProperty(PropertyName = "modified_at")]
-        public string ModifiedAt { get; }
-
+        public DateTime ModifiedAt { get; }
     }
 }
