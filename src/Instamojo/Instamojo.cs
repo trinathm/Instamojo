@@ -10,7 +10,7 @@ using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Instamojo
+namespace Instamojo.Net
 {
     /// <summary>
     /// Class Instamojo.
