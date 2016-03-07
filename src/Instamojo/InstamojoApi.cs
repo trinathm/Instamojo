@@ -1,5 +1,5 @@
-﻿using Instamojo.Model;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,12 +10,12 @@ using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Instamojo.Net
+namespace Instamojo
 {
     /// <summary>
     /// Class Instamojo.
     /// </summary>
-    public class Instamojo
+    public class InstamojoApi
     {
         /// <summary>
         /// Gets or sets the base URL.
@@ -36,16 +36,23 @@ namespace Instamojo.Net
         private string AuthToken { get; set; }
 
         /// <summary>
+        /// Gets or sets the serializer settings.
+        /// </summary>
+        /// <value>The serializer settings.</value>
+        private JsonSerializerSettings serializerSettings { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Instamojo" /> class.
         /// </summary>
         /// <param name="apiKey">The API key.</param>
         /// <param name="authToken">The authentication token.</param>
         /// <param name="baseUrl">The base URL.</param>
-        public Instamojo(string apiKey, string authToken, string baseUrl)
+        public InstamojoApi(string apiKey, string authToken, string baseUrl)
         {
             ApiKey = apiKey;
             AuthToken = authToken;
             BaseUrl = baseUrl;
+            serializerSettings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
         }
 
         /// <summary>
@@ -53,15 +60,16 @@ namespace Instamojo.Net
         /// </summary>
         /// <param name="paymentRequest">The payment request.</param>
         /// <returns>Return the payment request response.</returns>
-        public async Task<PaymentRequestResponse> CreatePaymentRequest(PaymentRequest paymentRequest)
+        public PaymentRequestResponse CreatePaymentRequest(PaymentRequest paymentRequest)
         {
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("X-API-KEY", ApiKey);
                 client.DefaultRequestHeaders.Add("X-AUTH-TOKEN", AuthToken);
-                var response = await client.PostAsJsonAsync<PaymentRequest>(this.BaseUrl + RequestEndpoints.PaymentRequest, paymentRequest);
-                var responseString = await response.Content.ReadAsStringAsync();
-                return await Task.Run(() => JsonConvert.DeserializeObject<PaymentRequestResponse>(responseString));
+                var content = JsonConvert.SerializeObject(paymentRequest, Formatting.Indented, serializerSettings);
+                var response = client.PostAsync(BaseUrl + RequestEndpoints.PaymentRequest, new StringContent(content, Encoding.UTF8, "application/json")).Result;
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<PaymentRequestResponse>(responseString);
             }
         }
 
@@ -70,15 +78,15 @@ namespace Instamojo.Net
         /// </summary>
         /// <param name="paymentId">The payment identifier.</param>
         /// <returns>Return payment request response for given payment id.</returns>
-        public async Task<PaymentRequestResponse> GetPaymentRequestStatus(string paymentId)
+        public PaymentRequestResponse GetPaymentRequestStatus(string paymentId)
         {
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("X-API-KEY", ApiKey);
                 client.DefaultRequestHeaders.Add("X-AUTH-TOKEN", AuthToken);
-                var response = await client.GetAsync(this.BaseUrl + RequestEndpoints.PaymentRequest + paymentId);
-                var responseString = await response.Content.ReadAsStringAsync();
-                return await Task.Run(() => JsonConvert.DeserializeObject<PaymentRequestResponse>(responseString));
+                var response = client.GetAsync(this.BaseUrl + RequestEndpoints.PaymentRequest + paymentId).Result;
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<PaymentRequestResponse>(responseString);
             }
         }
 
@@ -86,15 +94,15 @@ namespace Instamojo.Net
         /// Gets the payment requests.
         /// </summary>
         /// <returns>Return all the payment request responses.</returns>
-        public async Task<PaymentRequestsResponse> GetPaymentRequests()
+        public PaymentRequestsResponse GetPaymentRequests()
         {
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("X-API-KEY", ApiKey);
                 client.DefaultRequestHeaders.Add("X-AUTH-TOKEN", AuthToken);
-                var response = await client.GetAsync(this.BaseUrl + RequestEndpoints.PaymentRequest);
-                var responseString = await response.Content.ReadAsStringAsync();
-                return await Task.Run(() => JsonConvert.DeserializeObject<PaymentRequestsResponse>(responseString));
+                var response = client.GetAsync(this.BaseUrl + RequestEndpoints.PaymentRequest).Result;
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<PaymentRequestsResponse>(responseString);
             }
         }
 

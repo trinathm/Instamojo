@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Instamojo.Model
+namespace Instamojo
 {
     /// <summary>
     /// Class PaymentRequest.
@@ -86,51 +86,52 @@ namespace Instamojo.Model
         /// Gets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
-        public string Id { get; }
+        public string Id { get; set; }
+
         /// <summary>
         /// Gets the status.
         /// </summary>
         /// <value>The status.</value>
-        public Status Status { get; }
+        public Status Status { get; set; }
 
         /// <summary>
         /// Gets the SMS status.
         /// </summary>
         /// <value>The SMS status.</value>
         [JsonProperty(PropertyName = "sms_status")]
-        public NotificationStatus SmsStatus { get; }
+        public NotificationStatus? SmsStatus { get; set; }
 
         /// <summary>
         /// Gets the email status.
         /// </summary>
         /// <value>The email status.</value>
         [JsonProperty(PropertyName = "email_status")]
-        public NotificationStatus EmailStatus { get; }
+        public NotificationStatus? EmailStatus { get; set; }
 
         /// <summary>
         /// Gets the short URL.
         /// </summary>
         /// <value>The short URL.</value>
-        public string Shorturl { get; }
+        public string Shorturl { get; set; }
 
         /// <summary>
         /// Gets the long URL.
         /// </summary>
         /// <value>The long URL.</value>
-        public string Longurl { get; }
+        public string Longurl { get; set; }
 
         /// <summary>
         /// Gets the created at.
         /// </summary>
         /// <value>The created at.</value>
         [JsonProperty(PropertyName = "created_at")]
-        public DateTime CreatedAt { get; }
+        public DateTime CreatedAt { get; set; }
 
         /// <summary>
         /// Gets the modified at.
         /// </summary>
         /// <value>The modified at.</value>
         [JsonProperty(PropertyName = "modified_at")]
-        public DateTime ModifiedAt { get; }
+        public DateTime ModifiedAt { get; set; }
     }
 }

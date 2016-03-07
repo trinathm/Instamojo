@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Instamojo.Model
+namespace Instamojo
 {
     public class PaymentDetails : PaymentRequest
     {
