@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instamojo", "Instamojo\Instamojo.csproj", "{F0310BE4-19BE-4623-A58B-FB5F22861F06}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instamojo.Model", "Instamojo.Model\Instamojo.Model.csproj", "{CC137815-363A-4813-88B4-404FA8E671A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instamojo.Sdk", "Instamojo\Instamojo.Sdk.csproj", "{F0310BE4-19BE-4623-A58B-FB5F22861F06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{F0310BE4-19BE-4623-A58B-FB5F22861F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0310BE4-19BE-4623-A58B-FB5F22861F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0310BE4-19BE-4623-A58B-FB5F22861F06}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC137815-363A-4813-88B4-404FA8E671A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC137815-363A-4813-88B4-404FA8E671A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC137815-363A-4813-88B4-404FA8E671A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC137815-363A-4813-88B4-404FA8E671A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

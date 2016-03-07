@@ -46,11 +46,12 @@
   <ItemGroup>
     <Compile Include="Enums.cs" />
     <Compile Include="Payment.cs" />
+    <Compile Include="PaymentDetails.cs" />
     <Compile Include="PaymentRequestResponse.cs" />
     <Compile Include="PaymentRequest.cs" />
     <Compile Include="PaymentRequestsResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Webhook.cs" />
+    <Compile Include="PaymentResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

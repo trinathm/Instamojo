@@ -55,14 +55,15 @@
   <ItemGroup>
     <Compile Include="FilterKeys.cs" />
     <Compile Include="Instamojo.cs" />
+    <Compile Include="Model\Enums.cs" />
+    <Compile Include="Model\Payment.cs" />
+    <Compile Include="Model\PaymentDetails.cs" />
+    <Compile Include="Model\PaymentRequest.cs" />
+    <Compile Include="Model\PaymentRequestResponse.cs" />
+    <Compile Include="Model\PaymentRequestsResponse.cs" />
+    <Compile Include="Model\PaymentResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestEndpoints.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Instamojo.Model\Instamojo.Model.csproj">
-      <Project>{cc137815-363a-4813-88b4-404fa8e671a1}</Project>
-      <Name>Instamojo.Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

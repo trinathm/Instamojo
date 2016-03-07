@@ -18,11 +18,6 @@ namespace Instamojo
     public class Instamojo
     {
         /// <summary>
-        /// The headers
-        /// </summary>
-        private WebHeaderCollection Headers { get; set; }
-
-        /// <summary>
         /// Gets or sets the base URL.
         /// </summary>
         /// <value>The base URL.</value>
@@ -113,21 +108,7 @@ namespace Instamojo
         /// <returns>Return payment requests response based on the given params.</returns>
         public PaymentRequestsResponse GetPaymentRequests(DateTime? minimumCreatedDate = null, DateTime? maximumCreatedDate = null, DateTime? minimumModifiedDate = null, DateTime? maximumModifiedDate = null)
         {
-            var queryString = "?"
-            
-
-            if(minimumCreatedDate != null)
-            {
-                url += FilterKeys.MinCreatedAt + 
-            }
-
-            var uri = new Uri(this.BaseUrl + this.PaymentRequestEndpoint + "?");
-            var queryString = HttpUtility.ParseQueryString(string.Empty);
-
-            if(minimumCreatedDate != null)
-            {
-
-            }
+            throw new NotImplementedException();
         }
     }
 }
